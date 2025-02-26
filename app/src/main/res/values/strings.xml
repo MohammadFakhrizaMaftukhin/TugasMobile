@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Smt2</string>
+    <string name="welcome_message">Selamat Datang, %1$s!</string>
 </resources>
