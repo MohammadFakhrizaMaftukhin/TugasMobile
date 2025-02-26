@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Smt2"
+rootProject.name = "Smt4"
 include(":app")
  
