@@ -1,4 +1,4 @@
-package com.example.smt2
+package com.example.smt4
 
 import org.junit.Test
 
