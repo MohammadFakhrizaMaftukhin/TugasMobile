@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Smt2</string>
     <string name="welcome_message">Selamat Datang, %1$s!</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="login_user">Login User</string>
+    <string name="selamat_datang">Selamat Datang,</string>
+    <string name="kembali_ke_halaman_utama">Kembali Ke Halaman Utama</string>
 </resources>
