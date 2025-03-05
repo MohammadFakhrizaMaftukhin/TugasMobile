@@ -56,4 +56,8 @@ class KabaddiActivity : AppCompatActivity() {
             insets
         }
     }
+    private fun updateScore() {
+        scoreTextA.text = scoreTeamA.toString()
+        scoreTextB.text = scoreTeamB.toString()
+    }
 }
