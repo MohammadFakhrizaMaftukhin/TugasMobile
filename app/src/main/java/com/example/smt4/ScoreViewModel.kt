@@ -2,8 +2,9 @@ package com.example.smt4
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 
-class ScoreViewModel {
+class ScoreViewModel : ViewModel() {
     private val _scoreTeamA = MutableLiveData<Int>(0)
     private val _scoreTeamB = MutableLiveData<Int>(0)
 
