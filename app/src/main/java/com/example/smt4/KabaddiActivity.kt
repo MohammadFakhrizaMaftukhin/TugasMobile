@@ -4,50 +4,52 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class KabaddiActivity : AppCompatActivity() {
-    private var scoreTeamA = 0
-    private var scoreTeamB = 0
     private lateinit var scoreTextA: TextView
     private lateinit var scoreTextB: TextView
+    private val viewModel: ScoreViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_kabaddi)
-
+        
         // Initialize TextViews
         scoreTextA = findViewById(R.id.textscoreA)
         scoreTextB = findViewById(R.id.textscoreB)
 
+        // Observe score changes
+        viewModel.scoreTeamA.observe(this) { score ->
+            scoreTextA.text = score.toString()
+        }
+        viewModel.scoreTeamB.observe(this) { score ->
+            scoreTextB.text = score.toString()
+        }
+
         // Team A buttons
         findViewById<Button>(R.id.buttonplus1A).setOnClickListener {
-            scoreTeamA += 1
-            updateScore()
+            viewModel.addScoreTeamA(1)
         }
         findViewById<Button>(R.id.buttonplus2A).setOnClickListener {
-            scoreTeamA += 2
-            updateScore()
+            viewModel.addScoreTeamA(2)
         }
 
         // Team B buttons
         findViewById<Button>(R.id.buttonplus1B).setOnClickListener {
-            scoreTeamB += 1
-            updateScore()
+            viewModel.addScoreTeamB(1)
         }
         findViewById<Button>(R.id.buttonplus2B).setOnClickListener {
-            scoreTeamB += 2
-            updateScore()
+            viewModel.addScoreTeamB(2)
         }
 
         // Reset button
         findViewById<Button>(R.id.buttonreset).setOnClickListener {
-            scoreTeamA = 0
-            scoreTeamB = 0
-            updateScore()
+            viewModel.resetScore()
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -55,9 +57,5 @@ class KabaddiActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-    }
-    private fun updateScore() {
-        scoreTextA.text = scoreTeamA.toString()
-        scoreTextB.text = scoreTeamB.toString()
     }
 }
