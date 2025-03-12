@@ -1,132 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".KabaddiActivity">
+<layout>
+    <data>
+        <variable
+            name="ScoreViewModel"
+            type="com.example.smt4.ScoreViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".KabaddiActivity">
 
-    <View
-        android:id="@+id/garispemisah"
-        android:layout_width="2dp"
-        android:layout_height="260dp"
-        android:background="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <View
+            android:id="@+id/garispemisah"
+            android:layout_width="2dp"
+            android:layout_height="260dp"
+            android:background="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textteamA"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Team A"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/textscoreA"
-        app:layout_constraintEnd_toStartOf="@+id/garispemisah"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <TextView
-        android:id="@+id/textscoreA"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:textAlignment="center"
-        android:textSize="22pt"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonContainer1"
-        app:layout_constraintEnd_toEndOf="@+id/textteamA"
-        app:layout_constraintStart_toStartOf="@+id/textteamA"
-        app:layout_constraintTop_toBottomOf="@+id/textteamA" />
-
-    <LinearLayout
-        android:id="@+id/buttonContainer1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/garispemisah"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textscoreA">
-
-        <Button
-            android:id="@+id/buttonplus1A"
+        <TextView
+            android:id="@+id/textteamA"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="+1" />
+            android:text="Team A"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/textscoreA"
+            app:layout_constraintEnd_toStartOf="@+id/garispemisah"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
 
-        <Button
-            android:id="@+id/buttonplus2A"
+        <TextView
+            android:id="@+id/textscoreA"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="+2" />
-    </LinearLayout>
+            android:text="@{Integer.toString(ScoreViewModel.scoreTeamA)}"
+            android:textAlignment="center"
+            android:textSize="22pt"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/buttonContainer1"
+            app:layout_constraintEnd_toEndOf="@+id/textteamA"
+            app:layout_constraintStart_toStartOf="@+id/textteamA"
+            app:layout_constraintTop_toBottomOf="@+id/textteamA" />
 
-    <TextView
-        android:id="@+id/textteamB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Team B"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/textscoreB"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/garispemisah"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <TextView
-        android:id="@+id/textscoreB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:textAlignment="center"
-        android:textSize="22pt"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonContainer2"
-        app:layout_constraintEnd_toEndOf="@+id/textteamB"
-        app:layout_constraintStart_toStartOf="@+id/textteamB"
-        app:layout_constraintTop_toBottomOf="@+id/textteamB" />
-
-    <LinearLayout
-        android:id="@+id/buttonContainer2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/garispemisah"
-        app:layout_constraintTop_toBottomOf="@+id/textscoreB">
-
-        <Button
-            android:id="@+id/buttonplus1B"
+        <LinearLayout
+            android:id="@+id/buttonContainer1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="+1" />
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/garispemisah"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textscoreA">
 
-        <Button
-            android:id="@+id/buttonplus2B"
+            <Button
+                android:id="@+id/buttonplus1A"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="+1" />
+
+            <Button
+                android:id="@+id/buttonplus2A"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+2" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textteamB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="+2" />
-    </LinearLayout>
+            android:text="Team B"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/textscoreB"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/garispemisah"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
 
-    <Button
-        android:id="@+id/buttonreset"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:layout_marginTop="192dp"
-        android:text="Reset"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/garispemisah" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/textscoreB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{Integer.toString(ScoreViewModel.scoreTeamB)}"
+            android:textAlignment="center"
+            android:textSize="22pt"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/buttonContainer2"
+            app:layout_constraintEnd_toEndOf="@+id/textteamB"
+            app:layout_constraintStart_toStartOf="@+id/textteamB"
+            app:layout_constraintTop_toBottomOf="@+id/textteamB" />
+
+        <LinearLayout
+            android:id="@+id/buttonContainer2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/garispemisah"
+            app:layout_constraintTop_toBottomOf="@+id/textscoreB">
+
+            <Button
+                android:id="@+id/buttonplus1B"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="+1" />
+
+            <Button
+                android:id="@+id/buttonplus2B"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+2" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/buttonreset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_marginTop="192dp"
+            android:text="Reset"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/garispemisah" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
