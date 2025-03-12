@@ -8,8 +8,10 @@ class ScoreViewModel : ViewModel() {
     private val _scoreTeamA = MutableLiveData<Int>(0)
     private val _scoreTeamB = MutableLiveData<Int>(0)
 
-    val scoreTeamA: LiveData<Int> = _scoreTeamA
-    val scoreTeamB: LiveData<Int> = _scoreTeamB
+    val scoreTeamA: LiveData<Int>
+        get() = _scoreTeamA
+    val scoreTeamB: LiveData<Int>
+        get() = _scoreTeamB
 
     fun addScoreTeamA(points: Int) {
         _scoreTeamA.value = (_scoreTeamA.value ?: 0) + points
