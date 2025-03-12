@@ -3,6 +3,7 @@ package com.example.smt4
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -13,34 +14,32 @@ import androidx.lifecycle.Observer
 import com.example.smt4.databinding.ActivityKabaddiBinding
 
 class KabaddiActivity : AppCompatActivity() {
-//    private lateinit var scoreTextA: TextView
-//    private lateinit var scoreTextB: TextView
     private val viewModel: ScoreViewModel by viewModels()
-//    private lateinit var binding: ActivityKabaddiBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-//        setContentView(R.layout.activity_kabaddi)
 
         val binding : ActivityKabaddiBinding = DataBindingUtil.setContentView(this, R.layout.activity_kabaddi)
 
-        // Initialize TextViews
-//        scoreTextA = findViewById(R.id.textscoreA)
-//        scoreTextB = findViewById(R.id.textscoreB)
-
-        // Observe score changes
-//        val observerScoreA = Observer<Int>{ skorBaru ->
-//            binding.textscoreA.text = skorBaru.toString()
-//        }
-//        viewModel.scoreTeamA.observe(this@KabaddiActivity, observerScoreA)
-//        val observerScoreB = Observer<Int>{ skorBaru ->
-//            binding.textscoreB.text = skorBaru.toString()
-//        }
-//        viewModel.scoreTeamB.observe(this@KabaddiActivity, observerScoreB)
-
         binding.scoreViewModel = viewModel
         binding.lifecycleOwner = this
+
+        viewModel.apply {
+            scoreTeamA.observe(this@KabaddiActivity) { scoreA ->
+                if (scoreA >= 25) {
+                    Toast.makeText(this@KabaddiActivity, "Tim A Menang!", Toast.LENGTH_LONG).show()
+                    resetScore()
+                }
+            }
+            
+            scoreTeamB.observe(this@KabaddiActivity) { scoreB ->
+                if (scoreB >= 25) {
+                    Toast.makeText(this@KabaddiActivity, "Tim B Menang!", Toast.LENGTH_LONG).show()
+                    resetScore()
+                }
+            }
+        }
 
         // Team A buttons
         binding.buttonplus1A.setOnClickListener {
@@ -61,7 +60,6 @@ class KabaddiActivity : AppCompatActivity() {
         // Reset button
         binding.buttonreset.setOnClickListener {
             viewModel.resetScore()
-//            ScoreViewModel.scoreTeamA.removeObserver(observerScoreA)
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
